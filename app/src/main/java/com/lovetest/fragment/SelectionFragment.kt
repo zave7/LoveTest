@@ -5,7 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.lovetest.R
+import kotlinx.android.synthetic.main.fragment_question.*
+import kotlinx.android.synthetic.main.fragment_selection.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,7 +22,9 @@ private const val ARG_PARAM2 = "param2"
  * Use the [SelectionFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SelectionFragment : Fragment() {
+class SelectionFragment : Fragment(), View.OnClickListener{
+
+    lateinit var navController : NavController
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -57,4 +64,34 @@ class SelectionFragment : Fragment() {
                 }
             }
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(view)
+
+        btn_back.setOnClickListener(this)
+        option_1.setOnClickListener(this)
+        option_2.setOnClickListener(this)
+        option_3.setOnClickListener(this)
+        option_4.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id) { // null 을 반환
+            R.id.option_1 -> {navigateWithIndex(1)}
+            R.id.option_2 -> {navigateWithIndex(2)}
+            R.id.option_3 -> {navigateWithIndex(3)}
+            R.id.option_4 -> {navigateWithIndex(4)}
+            R.id.btn_back -> {
+                // 프래그먼트는 이동할때 항상 백스택에 프래그먼트가 쌓인다.
+                navController.popBackStack() //
+            }
+        }
+    }
+
+    fun navigateWithIndex(index : Int) {
+        var bundle = bundleOf("index" to index) // 번들 생성
+        navController.navigate(R.id.action_selectionFragment_to_resultFragment, bundle)
+    }
+
 }

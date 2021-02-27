@@ -25,6 +25,7 @@
             android:layout_weight="1"
             android:background="@drawable/selection"
             android:gravity="center"
+            android:textColor="@color/black"
             android:text="1. Throw it away." />
 
         <TextView
@@ -36,7 +37,8 @@
             android:layout_weight="1"
             android:background="@drawable/selection"
             android:gravity="center"
-            android:text="1. Throw it away." />
+            android:textColor="@color/black"
+            android:text="2. Waterthe flowers." />
 
         <TextView
             android:id="@+id/option_3"
@@ -47,7 +49,8 @@
             android:layout_weight="1"
             android:background="@drawable/selection"
             android:gravity="center"
-            android:text="1. Throw it away." />
+            android:textColor="@color/black"
+            android:text="3. Cut it off with sissors." />
 
         <TextView
             android:id="@+id/option_4"
@@ -58,10 +61,12 @@
             android:layout_weight="1"
             android:background="@drawable/selection"
             android:gravity="center"
-            android:text="1. Throw it away." />
+            android:textColor="@color/black"
+            android:text="4. Make them as dried flowers." />
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/btn_back"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/previous"
